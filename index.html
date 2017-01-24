@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>QR Code Generation Using JavaScript</title>
+    <script src="js/lib/qrcode.min.js"></script>
+</head>
+
+<body>
+    <input id="qrtext" oninput="generateQRCode()" autofocus placeholder="Type Something" value="Hello, World" />
+    <div id="qrcode"></div>
+    <script>
+    var generateQRCode = (function() {
+        var qrInput = document.getElementById('qrtext');
+        var qrContainer = document.getElementById('qrcode');
+        var qrCode = new QRCode(qrContainer, qrInput.value);
+
+        function generateQRCode() {
+            qrCode.clear();
+            qrCode.makeCode(qrInput.value)
+        }
+        return generateQRCode;
+    }())
+    </script>
+</body>
+
+</html>
